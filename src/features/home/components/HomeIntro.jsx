@@ -3,11 +3,11 @@ import React from "react";
 const HomeIntro = () => {
   return (
     <section className="max-w-4xl mx-auto p-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center sm:text-left">
-          জামিয়া হুসাইনিয়া মাদ্রাসায় আপনাকে স্বাগতম
+      <div className="max-w-4xl mx-auto w-full p-6 shadow-2xl rounded-lg hover:shadow-2xl transition duration-300 cursor-pointer hover:border-b-2 hover:border-white">
+        <h1 className="text-2xl font-semibold mb-6 text-center sm:text-left">
+          জামিয়া হুসাইনিয়া মাদ্রাসা, শায়েস্তাগঞ্জ, হবিগঞ্জ
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed text-center sm:text-left">
+        <p className="sm:text-xl md:text-lg leading-relaxed text-center sm:text-left">
           জামিয়া হুসাইনিয়া শায়েস্তাগঞ্জ, হবিগঞ্জ জেলার ঐতিহ্যবাহী ও প্রসিদ্ধ
           দ্বীনি শিক্ষা প্রতিষ্ঠানগুলোর অন্যতম। শায়েস্তাগঞ্জ সংলগ্ন লস্করপুর
           একসময় তরফ রাজ্যের রাজধানী ছিল। বর্তমানেও শায়েস্তাগঞ্জ রেলপথ ও সড়কপথে

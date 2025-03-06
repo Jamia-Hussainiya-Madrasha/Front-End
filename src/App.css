@@ -1,4 +1,40 @@
+body {
+  background-color: #2C3754;
+  cursor: pointer;
+}
+
 * {
-  background-color: #12161f;
-  color: #ffffff;
+  color: whitesmoke;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.button1 {
+  width: 100%;
+  background-color: mediumslateblue;
+  color: white;
+  font-weight: 600;
+  padding: 8px 0;
+  border-radius: 6px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button1:hover {
+  background-color: mediumpurple;
+}
+
+button {
+  width: 100%;
+  background-color: darkcyan;
+  color: white;
+  font-weight: 600;
+  padding: 8px 0;
+  border-radius: 6px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: darkslategrey;
 }

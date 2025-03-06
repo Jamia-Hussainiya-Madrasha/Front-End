@@ -2,7 +2,7 @@ import axiosClient from "../../../configs/axios.config";
 
 const recentNoticeApi = {
   getRecentNoticesApi: () => {
-    return axiosClient.get("/notice/latest");
+    return axiosClient.get("/notices/latest/");
   },
 };
 

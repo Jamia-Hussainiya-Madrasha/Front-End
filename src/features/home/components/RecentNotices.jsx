@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { ClockLoader } from "react-spinners";
 import recentNoticeService from "../services/recentNotice.service";
 import RecentNotice from "./RecentNotice";
-import { ClockLoader } from "react-spinners";
 
 const RecentNotices = () => {
   const { data, isPending, isError, error } = useQuery({
@@ -12,7 +12,7 @@ const RecentNotices = () => {
 
   return (
     <section className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">Recent Notices</h1>
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">সাম্প্রতিক নোটিশগুলো</h1>
 
       {isError && <p className="text-red-500">{error.message}</p>}
 
