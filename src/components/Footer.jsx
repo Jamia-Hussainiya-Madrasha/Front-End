@@ -1,10 +1,11 @@
 import React from "react";
 import { FaFacebookF, FaGithub } from "react-icons/fa";
+import qrCodeImage from '/qr-code.png';
 
 const Footer = () => {
     return (
-        <footer className="p-2 text-white py-4" style={{ backgroundColor: 'black' }}>
-            <div className="max-w-[1144px] w-[95%] mx-auto container grid grid-cols-1 sm:grid-cols-4 gap-20 text-center">
+        <footer className="p-2 text-white py-4" style={{ backgroundColor: '#111' }}>
+            <div className="max-w-[1144px] w-[95%] mx-auto container grid grid-cols-1 sm:grid-cols-4  text-center">
                 {/* Services Section */}
                 <span className="flex flex-col items-center">
                     <h6 className="text-lg font-semibold mb-3">গুরুত্বপূর্ণ লিংকসমূহ</h6>
@@ -26,15 +27,15 @@ const Footer = () => {
 
                 {/* Company Section */}
                 <span className="flex flex-col items-center">
-                    <h6 className="text-lg font-semibold mb-3 whitespace-nowrap">আমাদের পেজে যেতে স্কেন করুন</h6>
+                    <h6 className="text-lg font-semibold mb-3 whitespace-nowrap">স্ক্যান করুন</h6>
                     <ul className="space-y-2">
-                        <img className="w-48 h-48" src="./image/qr-code.png" alt="qr code" />
+                        <img className="w-32 h-32" src={qrCodeImage} alt="qr code" />
                     </ul>
                 </span>
 
                 {/* contact */}
                 <span className="flex flex-col items-center">
-                    <h6 className="text-lg font-semibold mb-3">যোগাযোগ করুন</h6>
+                    <h6 className="text-lg font-semibold mb-3">যোগাযোগ</h6>
                     <ul className="space-y-2">
                         <li className="whitespace-nowrap font-bold">ই-মেইল :- jamiyahusainiya1@gmail.com</li>
                         <li className="font-bold">মোবাইল নাম্বার :- +8801751699909</li>

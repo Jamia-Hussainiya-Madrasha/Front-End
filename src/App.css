@@ -5,6 +5,7 @@ body {
 
 * {
   color: whitesmoke;
+  font-family: 'Inter', sans-serif;
 }
 
 html {
@@ -12,8 +13,8 @@ html {
 }
 
 .button1 {
-  width: 100%;
-  background-color: mediumslateblue;
+  width: 50%;
+  background-color: #1659eb;
   color: white;
   font-weight: 600;
   padding: 8px 0;
@@ -22,11 +23,11 @@ html {
 }
 
 .button1:hover {
-  background-color: mediumpurple;
+  background-color: blue;
 }
 
 button {
-  width: 100%;
+  width: 50%;
   background-color: darkcyan;
   color: white;
   font-weight: 600;
@@ -36,5 +37,5 @@ button {
 }
 
 button:hover {
-  background-color: darkslategrey;
+  background-color: rgb(6, 201, 201);
 }

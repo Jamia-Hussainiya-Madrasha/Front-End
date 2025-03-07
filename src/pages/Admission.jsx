@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { FaBookOpen, FaCheckCircle } from "react-icons/fa";
+import { baseUrl } from "../constants/env.constants";
 
 const Admission = () => {
   const [admissions, setAdmissions] = useState([]);
@@ -31,7 +32,7 @@ const Admission = () => {
   };
 
   useEffect(() => {
-    fetchAdmissions("https://server-alpha-fawn.vercel.app/api/v1/admissions/");
+    fetchAdmissions(`${baseUrl}/admissions/`);
   }, []);
 
   return (
@@ -71,8 +72,36 @@ const Admission = () => {
           {error}
         </div>
       )}
+
       {loading ? (
-        <div className="text-center text-xl">লোড হচ্ছে...</div>
+        <div className="flex flex-col justify-center items-center">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold" style={{color:'red'}}>পেজ লোড হচ্ছে অপেক্ষা করুন...</h1>
+          </div>
+          <div className="mt-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100"
+              height="100"
+              viewBox="0 0 100 100"
+              fill="none"
+            >
+              <circle cx="50" cy="50" r="45" stroke="#3498db" strokeWidth="5" fill="none" />
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                stroke="#2ecc71"
+                strokeWidth="5"
+                fill="none"
+                strokeDasharray="283"
+                strokeDashoffset="75"
+                transform="rotate(-90 50 50)"
+                className="animate-spin"
+              />
+            </svg>
+          </div>
+        </div>
       ) : (
         <div className="overflow-x-auto mt-4">
           <table className="table-auto w-full border-collapse">
@@ -93,7 +122,7 @@ const Admission = () => {
             </thead>
             <tbody>
               {admissions.map((item) => (
-                <tr key={item.id} className=" whitespace-nowrap">
+                <tr key={item.id} className="whitespace-nowrap">
                   <td className="border p-10">{item.ClassName}</td>
                   <td className="border p-10">{item.new_admission_fee} টাকা</td>
                   <td className="border p-10">{item.old_admission_fee} টাকা</td>
@@ -104,7 +133,10 @@ const Admission = () => {
                   <td className="border p-10">{item.admission_start_date}</td>
                   <td className="border p-10">{item.admission_end_date}</td>
                   <td className="border p-10">{item.required_documents}</td>
-                  <td className={`border p-10 ${item.seat_availability ? "bg-green-800 text-white" : "bg-red-800 text-white"}`}>
+                  <td
+                    className={`border p-10 ${item.seat_availability ? "bg-green-800 text-white" : "bg-red-800 text-white"
+                      }`}
+                  >
                     {item.seat_availability ? "খালি আছে" : "খালি নেই"}
                   </td>
                 </tr>

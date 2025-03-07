@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../constants/env.constants";
 
 const Academics = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [selectedItem, setSelectedItem] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAcademicData = async () => {
       setLoading(true);
       try {
-        const response = await fetch("https://server-alpha-fawn.vercel.app/api/v1/academics/", {
+        const response = await fetch(`${baseUrl}/academics/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-          }
+          },
         });
 
         if (!response.ok) {
@@ -23,20 +25,7 @@ const Academics = () => {
         }
 
         const result = await response.json();
-
-        let sortedData = [];
-
-        if (result.results && Array.isArray(result.results.data)) {
-          sortedData = result.results.data;
-        } else if (Array.isArray(result.data)) {
-          sortedData = result.data;
-        } else {
-          console.error("Invalid API Response Structure", result);
-        }
-
-        // ডেট অনুসারে সর্ট করা (পুরাতন আগে, নতুন পরে)
-        sortedData.sort((a, b) => new Date(a.class_created) - new Date(b.class_created));
-
+        const sortedData = result.data.sort((a, b) => new Date(a.class_created) - new Date(b.class_created));
         setData(sortedData);
       } catch (err) {
         console.error("API Fetch Error:", err);
@@ -46,19 +35,11 @@ const Academics = () => {
       }
     };
 
-    fetchData();
+    fetchAcademicData();
   }, []);
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("bn-BD", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
+  const handleViewDetails = (id) => {
+    navigate(`/academic/${id}/`);
   };
 
   return (
@@ -68,37 +49,42 @@ const Academics = () => {
       </Helmet>
       <h2 className="text-2xl font-semibold mb-4 text-center">একাডেমিক তথ্য</h2>
 
-      {loading && <p className="text-center">📡 লোড হচ্ছে...</p>}
-      {error && <p className="text-center text-red-500">{error}</p>}
-      {!loading && data.length === 0 && <p className="text-center">❌ কোনো তথ্য পাওয়া যায়নি।</p>}
-
-      {selectedItem ? (
-        <div className="p-4 border rounded-lg shadow-lg">
-          <h1 className="text-3xl font-semibold">{selectedItem.class_name}</h1>
-          <br />
-          <div className="leading-12">
-            <h3 className="text-xl font-semibold">{selectedItem.class_title}</h3>
-            <p>{selectedItem.class_description}</p>
-            <p>আসন সংখ্যা: {selectedItem.number_seat} | ছাত্র সংখ্যা: {selectedItem.student_count}</p>
-            <p>🗓️ এড করার তারিখ: {formatDate(selectedItem.class_created)} | আপডেট করার তারিখ: {formatDate(selectedItem.class_update)}</p>
+      {loading ? (
+        <div className="flex flex-col justify-center items-center">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold" style={{ color: "red" }}>
+              পেজ লোড হচ্ছে, অপেক্ষা করুন...
+            </h1>
           </div>
-          <button onClick={() => setSelectedItem(null)}>🔙 ফিরে যান</button>
+          <div className="mt-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" className="animate-spin">
+              <circle cx="50" cy="50" r="45" stroke="#3498db" strokeWidth="5" fill="none" />
+              <circle cx="50" cy="50" r="45" stroke="#2ecc71" strokeWidth="5" fill="none" strokeDasharray="283" strokeDashoffset="75" transform="rotate(-90 50 50)" />
+            </svg>
+          </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {data.map((item) => (
-            <div key={item.uuid} className="p-5 border rounded-lg shadow-2xl cursor-pointer hover:bg-gray-600">
-              <div className="leading-14">
-                <h3 className="text-2xl font-semibold">{item.class_name}</h3>
-                <h3 className="text-md font-semibold">{item.class_title}</h3>
+        <>
+          {error && <p className="text-center text-red-500">❌ {error}</p>}
+          {data.length === 0 && !error && <p className="text-center">❌ কোনো তথ্য পাওয়া যায়নি।</p>}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {data.map((item) => (
+              <div key={item.id} className="p-5 border rounded-lg shadow-2xl cursor-pointer">
+                <div className="leading-14">
+                  <h3 className="text-2xl font-semibold">{item.class_name}</h3>
+                  <h3 className="text-md font-semibold">{item.class_title}</h3>
+                </div>
+                <button onClick={() => handleViewDetails(item.id)} className="mt-4">
+                  বিস্তারিত দেখুন
+                </button>
               </div>
-              <button onClick={() => handleItemClick(item)}>বিস্তারিত দেখুন</button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
     </section>
-  );
+  )
 };
 
 export default Academics;

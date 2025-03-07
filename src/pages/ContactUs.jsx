@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { baseUrl } from "../constants/env.constants";
+import mapImage from '/map.png';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +53,7 @@ const ContactUs = () => {
     if (validateForm()) {
       setLoading(true);
       try {
-        const response = await fetch("https://server-alpha-fawn.vercel.app/api/v1/contact/", {
+        const response = await fetch(`${baseUrl}/contact/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -97,7 +99,7 @@ const ContactUs = () => {
       <div className="flex flex-col md:flex-row w-full justify-between items-center gap-8">
         {/* Google Map Image Section (Left) */}
         <div className="w-full md:w-1/2 h-auto mb-6 md:mb-0">
-          <img src="./image/map.png" alt="Google Map" className="w-full h-full object-cover rounded-2xl" />
+          <img src={mapImage} alt="Google Map" className="w-full h-full object-cover rounded-2xl" />
         </div>
 
         {/* Contact Form Section (Right) */}
@@ -106,71 +108,38 @@ const ContactUs = () => {
             {/* Name Field */}
             <div className="mb-4">
               <label className="block font-medium mb-1">নাম</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="আপনার নাম"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2"
-              />
+              <input type="text" name="name" placeholder="আপনার নাম" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded-md focus:outline-none focus:ring-2" />
               {errors.name && <p className="text-sm">{errors.name}</p>}
             </div>
 
             {/* Email Field */}
             <div className="mb-4">
               <label className="block font-medium mb-1">ই-মেইল</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="আপনার ই-মেইল"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2"
-              />
+              <input type="email" name="email" placeholder="আপনার ই-মেইল" value={formData.email} onChange={handleChange} className="w-full p-2 border rounded-md focus:outline-none focus:ring-2" />
               {errors.email && <p className="text-sm">{errors.email}</p>}
             </div>
 
             {/* Phone Field */}
             <div className="mb-4">
               <label className="block font-medium mb-1">ফোন নাম্বার</label>
-              <input
-                type="text"
-                name="phone"
-                placeholder="আপনার ফোন নাম্বার ১১ ডিজিটের"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2"
-              />
+              <input type="text" name="phone" placeholder="আপনার ফোন নাম্বার ১১ ডিজিটের" value={formData.phone} onChange={handleChange} className="w-full p-2 border rounded-md focus:outline-none focus:ring-2" />
               {errors.phone && <p className="text-sm">{errors.phone}</p>}
             </div>
 
             {/* Message Field */}
             <div className="mb-4">
               <label className="block font-medium mb-1">মেসেজ</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="4"
-                placeholder="মাদ্রাসা কতৃপক্ষের সাথে আপনি কোন বিষয়ে কথা বলতে চান তা বিস্তারিত লিখুন। যদি আপনার ইমেইল পাঠানোর পর কোনো উত্তর না পান তাহলে ফোন করে বা সরাসরি মাদ্রাসায় এসে কথা বলুন।"
-                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2"
-              />
+              <textarea name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="মাদ্রাসা কতৃপক্ষের সাথে আপনি কোন বিষয়ে কথা বলতে চান তা বিস্তারিত লি আপনার ইমেইল পাঠানোর পর কোনো উত্তর না পান তাহলে ফোন করে বা সরাসরি মাদ্রাসায় এসে কথা বলুন।" className="w-full p-2 border rounded-md focus:outline-none focus:ring-2" />
               {errors.message && <p className="text-sm">{errors.message}</p>}
             </div>
 
             {/* Submit Button */}
-            <button
-              type="submit"
-              className="button1"
-              disabled={loading}
-            >
+            <button type="submit" className="button1" disabled={loading}>
               {loading ? "লোডিং..." : "সাবমিট"}
             </button>
           </form>
         </div>
       </div>
-
     </div>
   );
 };

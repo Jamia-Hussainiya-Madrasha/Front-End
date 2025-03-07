@@ -1,4 +1,3 @@
-import React from "react";
 import { Helmet } from "react-helmet";
 import Authorities from "../features/home/components/Authorities";
 import HomeIntro from "../features/home/components/HomeIntro";
