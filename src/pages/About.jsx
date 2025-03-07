@@ -1,14 +1,16 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FaBook, FaBullseye, FaCalendarAlt, FaQuoteRight, FaStar, FaUsers, FaUserTie } from 'react-icons/fa';
 import { aboutData } from '../constants/aboutData';
 
 const About = () => {
   return (
     <section className="max-w-[1144px] w-[95%] mx-auto py-8">
-      <Helmet>
-        <title>মাদ্রাসার সম্পর্কে</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>মাদ্রাসা সম্পর্কে</title>
+        </Helmet>
+      </HelmetProvider>
       <h2 className="text-2xl font-bold text-center mb-6 whitespace-nowrap">মাদ্রাসার সম্পর্কে বিস্তারিত</h2>
 
       {/* প্রতিষ্ঠাতা */}

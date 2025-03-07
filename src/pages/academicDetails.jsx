@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
 
@@ -55,16 +55,16 @@ const AcademicDetail = () => {
 
     return (
         <div className="max-w-[1144px] w-[95%] mx-auto py-8">
-            <Helmet>
-                <title>একাডেমিক ডিটেলস</title>
-            </Helmet>
+            <HelmetProvider>
+                <Helmet>
+                    <title>একাডেমিক বিস্তারিত</title>
+                </Helmet>
+            </HelmetProvider>
 
             {loading ? (
                 <div className="flex flex-col justify-center items-center">
                     <div className="text-center">
-                        <h1 className="text-2xl font-bold" style={{ color: 'red' }}>
-                            পেজ লোড হচ্ছে অপেক্ষা করুন...
-                        </h1>
+                        <h1 className="text-2xl font-bold" style={{ color: 'red' }}>পেজ লোড হচ্ছে অপেক্ষা করুন...</h1>
                     </div>
                     <div className="mt-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">

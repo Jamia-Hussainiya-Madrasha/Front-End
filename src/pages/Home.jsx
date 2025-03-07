@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Authorities from "../features/home/components/Authorities";
 import HomeIntro from "../features/home/components/HomeIntro";
 import ImageSlider from "../features/home/components/ImageSlider";
@@ -8,9 +8,11 @@ import RecentNotices from "../features/home/components/RecentNotices";
 const Home = () => {
   return (
     <>
-      <Helmet>
-        <title>জামিয়া হুসাইনিয়া মাদ্রাসা</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>জামিয়া হুসাইনিয়া মাদ্রাসা</title>
+        </Helmet>
+      </HelmetProvider>
       <section>
         <div className="max-w-[1144px] w-[95%] mx-auto">
           <ImageSlider />

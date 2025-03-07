@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
 
@@ -51,9 +51,11 @@ const Notice = () => {
 
   return (
     <section className="max-w-[1144px] w-[95%] mx-auto py-8">
-      <Helmet>
-        <title>নোটিশ</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>নোটিশ</title>
+        </Helmet>
+      </HelmetProvider>
       <h2 className="text-2xl font-bold text-center mb-8">নোটিশ সমূহ</h2>
 
       {/* লোডিং হলে SVG দেখাবে */}

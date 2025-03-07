@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { baseUrl } from "../constants/env.constants";
 import mapImage from '/map.png';
 
@@ -79,9 +79,11 @@ const ContactUs = () => {
 
   return (
     <div className="max-w-[1144px] w-[95%] mx-auto py-8">
-      <Helmet>
-        <title>যোগাযোগ</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>যোগাযোগ</title>
+        </Helmet>
+      </HelmetProvider>
       <h2 className="text-2xl font-bold text-center mb-6">যোগাযোগ করুন</h2>
 
       {successMessage && (

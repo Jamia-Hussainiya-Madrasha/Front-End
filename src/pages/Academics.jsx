@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
 
@@ -44,22 +44,22 @@ const Academics = () => {
 
   return (
     <section className="max-w-[1144px] w-[95%] mx-auto py-8">
-      <Helmet>
-        <title>একাডেমিক</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>একাডেমিক</title>
+        </Helmet>
+      </HelmetProvider>
       <h2 className="text-2xl font-semibold mb-4 text-center">একাডেমিক তথ্য</h2>
 
       {loading ? (
         <div className="flex flex-col justify-center items-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold" style={{ color: "red" }}>
-              পেজ লোড হচ্ছে, অপেক্ষা করুন...
-            </h1>
+            <h1 className="text-2xl font-bold" style={{ color: 'red' }}>পেজ লোড হচ্ছে অপেক্ষা করুন...</h1>
           </div>
           <div className="mt-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" className="animate-spin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
               <circle cx="50" cy="50" r="45" stroke="#3498db" strokeWidth="5" fill="none" />
-              <circle cx="50" cy="50" r="45" stroke="#2ecc71" strokeWidth="5" fill="none" strokeDasharray="283" strokeDashoffset="75" transform="rotate(-90 50 50)" />
+              <circle cx="50" cy="50" r="45" stroke="#2ecc71" strokeWidth="5" fill="none" strokeDasharray="283" strokeDashoffset="75" transform="rotate(-90 50 50)" className="animate-spin" />
             </svg>
           </div>
         </div>
