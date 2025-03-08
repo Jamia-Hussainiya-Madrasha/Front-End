@@ -1,15 +1,18 @@
-
 import Authorities from "../features/home/components/Authorities";
 import HomeIntro from "../features/home/components/HomeIntro";
 import ImageSlider from "../features/home/components/ImageSlider";
 import Marquee from "../features/home/components/Marquee";
 import RecentNotices from "../features/home/components/RecentNotices";
-import PageTitle from "../utils/PageTitle";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Home = () => {
   return (
     <>
-      <PageTitle key={"homePage"} title={"Home"} />
+      <HelmetProvider>
+        <Helmet>
+          <title>হুম</title>
+        </Helmet>
+      </HelmetProvider>
       <section>
         <div className="max-w-[1144px] w-[95%] mx-auto">
           <ImageSlider />

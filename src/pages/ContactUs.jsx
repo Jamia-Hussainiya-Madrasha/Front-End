@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { baseUrl } from "../constants/env.constants";
 import mapImage from "/map.png";
-import PageTitle from "../utils/PageTitle";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -82,7 +82,11 @@ const ContactUs = () => {
 
   return (
     <>
-      <PageTitle key={"contactPage"} title={"Contact"} />
+      <HelmetProvider>
+        <Helmet>
+          <title>যোগাযোগ</title>
+        </Helmet>
+      </HelmetProvider>
       <div className="max-w-[1144px] w-[95%] mx-auto py-8">
         <h2 className="text-2xl font-bold text-center mb-6">যোগাযোগ করুন</h2>
 

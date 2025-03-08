@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
-import PageTitle from "../utils/PageTitle";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Academics = () => {
   const [data, setData] = useState([]);
@@ -46,7 +46,11 @@ const Academics = () => {
 
   return (
     <>
-      <PageTitle key={"academicPage"} title={"Academic"} />
+      <HelmetProvider>
+        <Helmet>
+          <title>একাডেমিক</title>
+        </Helmet>
+      </HelmetProvider>
       <section className="max-w-[1144px] w-[95%] mx-auto py-8">
         <h2 className="text-2xl font-semibold mb-4 text-center">
           একাডেমিক তথ্য
