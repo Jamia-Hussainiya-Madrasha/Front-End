@@ -15,7 +15,7 @@ const NoticeDetail = () => {
             setLoading(true);
             setError("");
             try {
-                const response = await fetch(`${baseUrl}/notices/${id}/`, {
+                const response = await fetch(`${baseUrl}/notices/${id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const NoticeDetail = () => {
 
 
     const backNotice = () => {
-        navigate(`/notice`);
+        navigate(`/notices`);
     };
 
     return (

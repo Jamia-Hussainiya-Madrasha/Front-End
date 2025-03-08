@@ -16,7 +16,7 @@ const Teachers = () => {
     const fetchTeachers = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${baseUrl}/teacher/`, {
+        const response = await fetch(`${baseUrl}/teacher`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

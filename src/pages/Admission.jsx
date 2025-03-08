@@ -32,7 +32,7 @@ const Admission = () => {
   };
 
   useEffect(() => {
-    fetchAdmissions(`${baseUrl}/admissions/`);
+    fetchAdmissions(`${baseUrl}/admissions`);
   }, []);
 
   return (

@@ -53,7 +53,7 @@ const ContactUs = () => {
     if (validateForm()) {
       setLoading(true);
       try {
-        const response = await fetch(`${baseUrl}/contact/`, {
+        const response = await fetch(`${baseUrl}/contact`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

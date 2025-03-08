@@ -13,7 +13,7 @@ const Notice = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await fetch(`${baseUrl}/notices/`, {
+        const response = await fetch(`${baseUrl}/notices`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const Notice = () => {
                 🗓️ প্রকাশের তারিখ : {formatDate(notice.created_at)}
               </p>
               <button className="button1 mt-5">
-                <Link to={`/notice/${notice.id}/`} className="text-white">
+                <Link to={`/notices/${notice.id}`} className="text-white">
                   বিস্তারিত দেখুন
                 </Link>
               </button>
