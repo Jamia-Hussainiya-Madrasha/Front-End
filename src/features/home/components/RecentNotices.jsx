@@ -6,7 +6,7 @@ import { baseUrl } from "../../../constants/env.constants";
 import { useNavigate } from "react-router-dom";
 
 const fetchRecentNotices = async () => {
-  const response = await fetch(`${baseUrl}/notices/latest/`);
+  const response = await fetch(`${baseUrl}/notices/latest`);
   if (!response.ok) {
     throw new Error("Failed to fetch recent notices");
   }

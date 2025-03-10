@@ -13,7 +13,7 @@ const Notice = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await fetch(`${baseUrl}/notices/`, {
+        const response = await fetch(`${baseUrl}/notices`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

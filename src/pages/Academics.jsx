@@ -13,7 +13,7 @@ const Academics = () => {
     const fetchAcademicData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${baseUrl}/academics/`, {
+        const response = await fetch(`${baseUrl}/academics`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

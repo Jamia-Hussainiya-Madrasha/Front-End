@@ -15,7 +15,7 @@ const AcademicDetail = () => {
     const fetchClassDetail = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${baseUrl}/academics/${id}/`, {
+        const response = await fetch(`${baseUrl}/academics/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

@@ -14,7 +14,7 @@ const NoticeDetail = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await fetch(`${baseUrl}/notices/${id}/`, {
+        const response = await fetch(`${baseUrl}/notices/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

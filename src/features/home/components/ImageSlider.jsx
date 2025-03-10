@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { baseUrl } from "../../../constants/env.constants";
 
 const fetchSliderImages = async () => {
-  const response = await fetch(`${baseUrl}/images/`);
+  const response = await fetch(`${baseUrl}/images`);
   if (!response.ok) {
     throw new Error("Failed to fetch images");
   }
