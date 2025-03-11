@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
 import PageTitle from "../utils/PageTitle";
 
-const Academics = () => {
-  const [data, setData] = useState([]);
+const AcademicDetail = () => {
+  const { id } = useParams();
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [setError] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchAcademicData = async () => {
+    const fetchClassDetail = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${baseUrl}/academics`, {
+        const response = await fetch(`${baseUrl}/academics/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -25,10 +27,15 @@ const Academics = () => {
         }
 
         const result = await response.json();
-        const sortedData = result.data.sort(
-          (a, b) => new Date(a.class_created) - new Date(b.class_created)
-        );
-        setData(sortedData);
+        console.log(result);
+
+        if (result && result.data) {
+          setData(result.data);
+        } else if (result) {
+          setData(result);
+        } else {
+          setError("❌ কোনো তথ্য পাওয়া যায়নি।");
+        }
       } catch (err) {
         console.error("API Fetch Error:", err);
         setError("ডাটা লোড করতে সমস্যা হয়েছে!");
@@ -37,21 +44,19 @@ const Academics = () => {
       }
     };
 
-    fetchAcademicData();
-  }, []);
+    if (id) {
+      fetchClassDetail();
+    }
+  }, [id, setError]);
 
-  const handleViewDetails = (id) => {
-    navigate(`/academic/${id}/`);
+  const backAcademic = () => {
+    navigate("/academic/");
   };
 
   return (
     <>
       <PageTitle key={"academicPage"} title={"Academic"} />
-      <section className="max-w-[1144px] w-[95%] mx-auto py-8">
-        <h2 className="text-2xl font-semibold mb-4 text-center">
-          একাডেমিক তথ্য
-        </h2>
-
+      <div className="max-w-[1144px] w-[95%] mx-auto py-8">
         {loading ? (
           <div className="flex flex-col justify-center items-center">
             <div className="text-center">
@@ -91,40 +96,34 @@ const Academics = () => {
             </div>
           </div>
         ) : (
-          <>
-            {error && <p className="text-center text-red-500">❌ {error}</p>}
-            {data.length === 0 && !error && (
-              <p className="text-center">❌ কোনো তথ্য পাওয়া যায়নি।</p>
-            )}
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {data.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-5 border rounded-lg shadow-2xl cursor-pointer"
-                >
-                  <div className="leading-14">
-                    <h3 className="text-2xl font-semibold">
-                      {item.class_name}
-                    </h3>
-                    <h3 className="text-md font-semibold">
-                      {item.class_title}
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => handleViewDetails(item.id)}
-                    className="mt-4"
-                  >
-                    বিস্তারিত দেখুন
-                  </button>
-                </div>
-              ))}
+          <div className="p-14 border rounded-lg shadow-2xl cursor-pointer">
+            <h1 className="text-3xl font-semibold">{data.class_name}</h1>
+            <br />
+            <div className="leading-10">
+              <h2 className="text-xl font-semibold">{data.class_title}</h2>
+              <p>{data.class_description}</p>
+              <p>
+                আসন সংখ্যা: {data.number_seat} | ছাত্র সংখ্যা:{" "}
+                {data.student_count}
+              </p>
+              <p>
+                🗓️ এড করার তারিখ:{" "}
+                {new Date(data.class_created).toLocaleDateString("bn-BD")}
+              </p>
+              <p>
+                🗓️ আপডেট করার তারিখ:{" "}
+                {new Date(data.class_update).toLocaleDateString("bn-BD")}
+              </p>
             </div>
-          </>
+
+            <button onClick={() => backAcademic()} className="mt-4 button1">
+              🔙 ফিরে যান
+            </button>
+          </div>
         )}
-      </section>
+      </div>
     </>
   );
 };
 
-export default Academics;
+export default AcademicDetail;
