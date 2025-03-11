@@ -47,8 +47,8 @@ const Academics = () => {
   return (
     <>
       <PageTitle key={"academicPage"} title={"Academic"} />
-      <section className="max-w-[1144px] w-[95%] mx-auto py-8">
-        <h2 className="text-2xl font-semibold mb-4 text-center">
+      <section className="max-w-[1144px] w-[95%] mx-auto mt-28">
+        <h2 className="text-2xl font-semibold mb-8 text-center">
           একাডেমিক তথ্য
         </h2>
 

@@ -38,7 +38,7 @@ const Admission = () => {
   return (
     <>
       <PageTitle key={"admissionPage"} title={"Admission"} />
-      <section className="max-w-[1144px] w-[95%] mx-auto py-8">
+      <section className="max-w-[1144px] w-[95%] mx-auto mt-28">
         <br />
         <div className="p-6 rounded-lg shadow-2xl mb-8">
           {/* Section Title */}
@@ -107,7 +107,7 @@ const Admission = () => {
             </div>
           </div>
         ) : (
-          <div className="overflow-x-auto mt-4">
+          <div className="overflow-x-auto mt-8">
             <table className="table-auto w-full border-collapse">
               <thead>
                 <tr className="text-left">

@@ -52,7 +52,7 @@ const Notice = () => {
   return (
     <>
       <PageTitle key={"noticePage"} title={"Notice Page"} />
-      <section className="max-w-[1144px] w-[95%] mx-auto py-8">
+      <section className="max-w-[1144px] w-[95%] mx-auto mt-28">
         <h2 className="text-2xl font-bold text-center mb-8">নোটিশ সমূহ</h2>
 
         {/* লোডিং হলে SVG দেখাবে */}
@@ -113,7 +113,7 @@ const Notice = () => {
                   🗓️ প্রকাশের তারিখ : {formatDate(notice.created_at)}
                 </p>
                 <button className="button1 mt-5">
-                  <Link to={`/notice/${notice.id}/`} className="text-white">
+                  <Link to={`/notice/${notice.id}`} className="text-white">
                     বিস্তারিত দেখুন
                   </Link>
                 </button>
