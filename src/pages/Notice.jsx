@@ -113,7 +113,7 @@ const Notice = () => {
                   🗓️ প্রকাশের তারিখ : {formatDate(notice.created_at)}
                 </p>
                 <button className="button1 mt-5">
-                  <Link to={`/notice/${notice.id}/`} className="text-white">
+                  <Link to={`/notice/${notice.id}`} className="text-white">
                     বিস্তারিত দেখুন
                   </Link>
                 </button>
