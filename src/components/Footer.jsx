@@ -4,7 +4,7 @@ import qrCodeImage from '/qr-code.png';
 
 const Footer = () => {
     return (
-        <footer className="p-2 text-white py-4" style={{ backgroundColor: '#111' }}>
+        <footer className="p-2 text-white py-8 mt-10" style={{ backgroundColor: '#111' }}>
             <div className="max-w-[1144px] w-[95%] mx-auto container grid grid-cols-1 sm:grid-cols-4  text-center">
                 {/* Services Section */}
                 <span className="flex flex-col items-center">

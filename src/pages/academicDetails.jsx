@@ -56,7 +56,7 @@ const AcademicDetail = () => {
   return (
     <>
       <PageTitle key={"academicPage"} title={"Academic"} />
-      <div className="max-w-[1144px] w-[95%] mx-auto py-8">
+      <div className="max-w-[1144px] w-[95%] mx-auto mt-28">
         {loading ? (
           <div className="flex flex-col justify-center items-center">
             <div className="text-center">

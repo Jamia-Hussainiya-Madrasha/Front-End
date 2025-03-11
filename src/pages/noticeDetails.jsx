@@ -46,8 +46,8 @@ const NoticeDetail = () => {
   return (
     <>
       <PageTitle key={"noticePage"} title={"Notice Details"} />
-      <section className="max-w-[800px] w-[95%] mx-auto py-8">
-        <h1 className="text-2xl font-bold text-center">
+      <section className="max-w-[800px] w-[95%] mx-auto mt-28">
+        <h1 className="text-2xl font-bold text-center mb-4">
           অত্র জামিয়ার বিস্তারিত নোটিশ
         </h1>
         <br />
