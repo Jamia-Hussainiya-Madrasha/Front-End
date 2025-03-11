@@ -83,8 +83,8 @@ const ContactUs = () => {
   return (
     <>
       <PageTitle key={"contactPage"} title={"Contact"} />
-      <div className="max-w-[1144px] w-[95%] mx-auto py-8">
-        <h2 className="text-2xl font-bold text-center mb-6">যোগাযোগ করুন</h2>
+      <div className="max-w-[1144px] w-[95%] mx-auto mt-28">
+        <h2 className="text-2xl font-bold text-center mb-8">যোগাযোগ করুন</h2>
 
         {successMessage && (
           <div className="mb-4 font-semibold text-center p-3 rounded">

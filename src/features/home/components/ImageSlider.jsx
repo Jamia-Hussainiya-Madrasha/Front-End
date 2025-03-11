@@ -38,7 +38,7 @@ const ImageSlider = () => {
     );
 
   return (
-    <section className="py-6">
+    <section className="mt-28">
       <div className="w-full max-w-6xl mx-auto">
         <Swiper modules={[Navigation, Pagination, Autoplay]} navigation pagination={{ clickable: true }} autoplay={{ delay: 4000, disableOnInteraction: false }} className="custom-swiper rounded-lg">
           {data?.map((image, index) => (

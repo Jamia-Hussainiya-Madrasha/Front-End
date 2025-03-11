@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="text-white py-3" style={{ backgroundColor: '#111' }}>
+    <nav className="text-white py-2 fixed top-0 left-0 w-full z-50" style={{ backgroundColor: '#111' }}>
       <div className="container max-w-screen-xl mx-auto px-2 gap-1 py-3 flex items-center justify-between">
         <h1 className="md:text-3xl font-bold whitespace-nowrap">জামিয়া হুসাইনিয়া মাদ্রাসা</h1>
 

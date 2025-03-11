@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../constants/env.constants";
-import avaterImage from "/avater.png";
 import PageTitle from "../utils/PageTitle";
+import avaterImage from "/avater.png";
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString("en-US");
@@ -51,8 +51,8 @@ const Teachers = () => {
   return (
     <>
       <PageTitle key={"teachersPage"} title={"Teachers"} />
-      <section className="max-w-[1144px] w-[95%] mx-auto py-8">
-        <h2 className="text-2xl font-semibold mb-4 text-center text-blue-600">
+      <section className="max-w-[1144px] w-[95%] mx-auto mt-28">
+        <h2 className="text-2xl font-semibold mb-8 text-center text-blue-600">
           আমাদের শিক্ষকবৃন্দ
         </h2>
 
@@ -103,7 +103,7 @@ const Teachers = () => {
               </p>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 leading-10">
               {data.map((teacher) => (
                 <div
                   key={teacher.id}
@@ -114,7 +114,7 @@ const Teachers = () => {
                     alt={teacher.name}
                     className="w-24 h-24 rounded-full object-cover mb-3"
                   />
-                  <h3 className="text-xl font-semibold whitespace-nowrap">
+                  <h3 className="text-xl font-semibold text-center">
                     {teacher.name}
                   </h3>
                   <p className="text-gray-600">{teacher.designation}</p>
@@ -122,8 +122,10 @@ const Teachers = () => {
                     যোগাযোগ: {teacher.phone_number}
                   </p>
                   <p className="text-sm text-gray-500">
-                    এড করার তারিখ: {formatDate(teacher.created_at)} | আপডেট করার
-                    তারিখ: {formatDate(teacher.updated_at)}
+                  🗓️ এড করার তারিখ : {formatDate(teacher.created_at)}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                  🗓️ আপডেট করার তারিখ : {formatDate(teacher.updated_at)}
                   </p>
                 </div>
               ))}

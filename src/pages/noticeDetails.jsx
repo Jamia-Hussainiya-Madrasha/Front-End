@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
+import PageTitle from "../utils/PageTitle";
 
 const NoticeDetail = () => {
   const { id } = useParams();
@@ -45,8 +46,8 @@ const NoticeDetail = () => {
   return (
     <>
       <PageTitle key={"noticePage"} title={"Notice Details"} />
-      <section className="max-w-[800px] w-[95%] mx-auto py-8">
-        <h1 className="text-2xl font-bold text-center">
+      <section className="max-w-[800px] w-[95%] mx-auto mt-28">
+        <h1 className="text-2xl font-bold text-center mb-4">
           অত্র জামিয়ার বিস্তারিত নোটিশ
         </h1>
         <br />
