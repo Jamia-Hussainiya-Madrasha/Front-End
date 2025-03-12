@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import About from "../pages/About";
-import AcademicDetail from "../pages/academicDetails";
+import AcademicDetailPage from "../pages/AcademicDetailsPage";
 import Academics from "../pages/Academics";
 import Admission from "../pages/Admission";
 import ContactUs from "../pages/ContactUs";
@@ -33,7 +33,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/academic/:id",
-        element: <AcademicDetail />,
+        element: <AcademicDetailPage />,
       },
       {
         path: "/teachers",

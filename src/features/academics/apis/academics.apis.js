@@ -5,7 +5,7 @@ const academicsApis = {
     return axiosClient.get("/academics");
   },
   findOne: (id) => {
-    return axiosClient.get(`/academics/:${id}`);
+    return axiosClient.get(`/academics/${id}`);
   },
 };
 
