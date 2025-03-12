@@ -53,7 +53,7 @@ const Academics = () => {
         </h2>
 
         {loading ? (
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center min-h-[47.5vh]">
             <div className="text-center">
               <h1 className="text-2xl font-bold" style={{ color: "red" }}>
                 পেজ লোড হচ্ছে অপেক্ষা করুন...
