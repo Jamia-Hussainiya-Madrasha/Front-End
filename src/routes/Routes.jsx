@@ -9,6 +9,8 @@ import Home from "../pages/Home";
 import Notice from "../pages/Notice";
 import NoticeDetail from "../pages/noticeDetails";
 import Teachers from "../pages/Teachers";
+import PhotoGallary from "../pages/photoGallary";
+import VideoGallary from "../pages/VideoGallary";
 
 const Routes = createBrowserRouter([
   {
@@ -50,6 +52,14 @@ const Routes = createBrowserRouter([
       {
         path: "/notice/:id",
         element: <NoticeDetail />,
+      },
+      {
+        path: "/photoGallary",
+        element: <PhotoGallary />,
+      },
+      {
+        path: "/VideoGallary",
+        element: <VideoGallary />,
       },
     ],
   },

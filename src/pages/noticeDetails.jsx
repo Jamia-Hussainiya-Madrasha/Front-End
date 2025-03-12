@@ -54,11 +54,6 @@ const NoticeDetail = () => {
 
         {loading ? (
           <div className="flex flex-col justify-center items-center">
-            <div className="text-center">
-              <h1 className="text-2xl font-bold" style={{ color: "red" }}>
-                পেজ লোড হচ্ছে অপেক্ষা করুন...
-              </h1>
-            </div>
             <div className="mt-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
