@@ -11,6 +11,7 @@ import TeachersPage from "../pages/TeachersPage";
 import AdmissionPage from "../pages/AdmissionPage";
 import PhotoGallery from "../pages/photoGallery";
 import VideoGallery from "../pages/VideoGallery";
+import BookIntroduction from "../pages/BookIntroduction";
 
 const Routes = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const Routes = createBrowserRouter([
       {
         path: "/video-gallery",
         element: <VideoGallery />,
+      },
+      {
+        path: "/book-introduction",
+        element: <BookIntroduction />,
       },
     ],
   },
