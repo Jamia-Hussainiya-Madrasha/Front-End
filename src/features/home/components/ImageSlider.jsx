@@ -6,13 +6,14 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import homeService from "../services/home.services";
+import { useMemo } from "react";
 
 const ImageSlider = () => {
   const { data, error, isError, isPending } = useQuery({
     queryKey: ["sliderImage"],
     queryFn: homeService.getSliderImage,
   });
-
+  const refinedData = useMemo(() => data?.data, [data]);
   if (isPending)
     return (
       <section className="flex justify-center py-10">
@@ -39,7 +40,7 @@ const ImageSlider = () => {
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           className="custom-swiper rounded-lg"
         >
-          {data?.map((image, index) => (
+          {refinedData?.map((image, index) => (
             <SwiperSlide key={index} className="flex justify-center">
               <img
                 src={image.img}

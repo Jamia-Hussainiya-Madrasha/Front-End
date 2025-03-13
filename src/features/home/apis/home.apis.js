@@ -1,3 +1,5 @@
+import axiosClient from "../../../configs/axios.config";
+
 const homeApi = {
   findLatestNotice: () => {
     return axiosClient.get("/notices/latest");
@@ -6,3 +8,5 @@ const homeApi = {
     return axiosClient.get("/images");
   },
 };
+
+export default homeApi;

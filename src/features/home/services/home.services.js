@@ -1,4 +1,5 @@
 import { AxiosError } from "axios";
+import homeApi from "../apis/home.apis";
 
 const homeService = {
   getLatestNotice: async () => {
