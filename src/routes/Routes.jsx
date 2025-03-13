@@ -9,6 +9,8 @@ import NoticePage from "../pages/NoticePage";
 import NoticeDetailsPage from "../pages/NoticeDetailsPage";
 import TeachersPage from "../pages/TeachersPage";
 import AdmissionPage from "../pages/AdmissionPage";
+import PhotoGallery from "../pages/photoGallery";
+import VideoGallery from "../pages/VideoGallery";
 
 const Routes = createBrowserRouter([
   {
@@ -50,6 +52,14 @@ const Routes = createBrowserRouter([
       {
         path: "/notice/:id",
         element: <NoticeDetailsPage />,
+      },
+      {
+        path: "/photo-gallery",
+        element: <PhotoGallery />,
+      },
+      {
+        path: "/video-gallery",
+        element: <VideoGallery />,
       },
     ],
   },
