@@ -3,12 +3,12 @@ import Main from "../layouts/Main";
 import About from "../pages/About";
 import AcademicDetailPage from "../pages/AcademicDetailsPage";
 import Academics from "../pages/Academics";
-import Admission from "../pages/Admission";
 import ContactUs from "../pages/ContactUs";
 import Home from "../pages/Home";
 import Notice from "../pages/Notice";
 import NoticeDetail from "../pages/noticeDetails";
 import TeachersPage from "../pages/TeachersPage";
+import AdmissionPage from "../pages/AdmissionPage";
 
 const Routes = createBrowserRouter([
   {
@@ -41,7 +41,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/admission",
-        element: <Admission />,
+        element: <AdmissionPage />,
       },
       {
         path: "/notice",
