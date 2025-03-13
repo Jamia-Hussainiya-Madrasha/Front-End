@@ -7,7 +7,6 @@ const Notice = ({ title, created_at, id }) => {
   const handleDetails = () => {
     navigate(`/notice/${id}`);
   };
-  console.log(title);
   return (
     <div className="p-4 border rounded-lg shadow-2xl">
       <h3 className="text-2xl font-semibold">{title}</h3>

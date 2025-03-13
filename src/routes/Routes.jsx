@@ -6,7 +6,7 @@ import Academics from "../pages/Academics";
 import ContactUs from "../pages/ContactUs";
 import Home from "../pages/Home";
 import NoticePage from "../pages/NoticePage";
-import NoticeDetails from "../pages/NoticeDetailsPage";
+import NoticeDetailsPage from "../pages/NoticeDetailsPage";
 import TeachersPage from "../pages/TeachersPage";
 import AdmissionPage from "../pages/AdmissionPage";
 
@@ -49,7 +49,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/notice/:id",
-        element: <NoticeDetails />,
+        element: <NoticeDetailsPage />,
       },
     ],
   },

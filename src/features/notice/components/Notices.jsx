@@ -11,7 +11,6 @@ const Notices = () => {
     queryFn: noticeService.getAll,
   });
   const refinedData = useMemo(() => data?.data ?? [], [data]);
-  console.log(refinedData);
   return (
     <>
       {isPending && <Loader />}

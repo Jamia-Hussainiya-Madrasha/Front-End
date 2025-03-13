@@ -5,7 +5,7 @@ const noticeApi = {
     return axiosClient.get("/notices");
   },
   findOne: (id) => {
-    return axiosClient.get(`/notices/:${id}`);
+    return axiosClient.get(`/notices/${id}`);
   },
 };
 
