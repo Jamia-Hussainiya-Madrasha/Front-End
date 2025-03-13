@@ -9,19 +9,21 @@ import NoDataFound from "../components/NoDataFound";
 
 const AcademicDetailPage = () => {
   const { id } = useParams();
-  const { isPending, isError, data, error } = useQuery({
+  console.log(id)
+  const { isPending, data, isError, error } = useQuery({
     queryKey: [`academicDetail${id}`],
     queryFn: () => academicsServices.getOneAcademic(id),
+    enabled: !!id,
   });
   const refineData = data?.data;
-
+  console.log(isError);
   return (
     <>
       <PageTitle key={"academicPage"} title={"Academic"} />
       <div className="max-w-[1144px] w-[95%] mx-auto mt-[100px] px-4 sm:px-6 lg:px-8">
         {isPending && <Loader key={"loader"} />}
         {isError && <Error key={"error"} errorMessage={error.message} />}
-        {!refineData && <NoDataFound key={"noDataFound"} />}
+        {!isPending && !refineData && <NoDataFound key={"noDataFound"} />}
         {refineData && (
           <div className="flex justify-center items-center min-h-[64.5vh]">
             <AcademicDetail

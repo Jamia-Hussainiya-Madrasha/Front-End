@@ -8,7 +8,7 @@ import ContactUs from "../pages/ContactUs";
 import Home from "../pages/Home";
 import Notice from "../pages/Notice";
 import NoticeDetail from "../pages/noticeDetails";
-import Teachers from "../pages/Teachers";
+import TeachersPage from "../pages/TeachersPage";
 
 const Routes = createBrowserRouter([
   {
@@ -37,7 +37,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/teachers",
-        element: <Teachers />,
+        element: <TeachersPage />,
       },
       {
         path: "/admission",
