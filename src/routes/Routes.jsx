@@ -11,7 +11,10 @@ import NoticeDetail from "../pages/noticeDetails";
 import Teachers from "../pages/Teachers";
 import PhotoGallary from "../pages/photoGallary";
 import VideoGallary from "../pages/VideoGallary";
+<<<<<<< HEAD
+=======
 import BookIntroduction from "../pages/BookIntroduction";
+>>>>>>> 37bd479decb94cf4d3be69f740aff27b1f3cb963
 =======
 import NoticePage from "../pages/NoticePage";
 import NoticeDetailsPage from "../pages/NoticeDetailsPage";
