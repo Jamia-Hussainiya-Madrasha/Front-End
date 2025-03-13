@@ -1,39 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { FaBookOpen, FaCheckCircle } from "react-icons/fa";
-import { baseUrl } from "../constants/env.constants";
 import PageTitle from "../utils/PageTitle";
+import { useQuery } from "@tanstack/react-query";
+import admissionService from "../features/admission/services/admission.services";
+import Admission from "../features/admission/components/Admission";
 
-const Admission = () => {
-  const [admissions, setAdmissions] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [nextPageUrl, setNextPageUrl] = useState(null);
-  const [prevPageUrl, setPrevPageUrl] = useState(null);
+const AdmissionPage = () => {
+  const [page, setPage] = useState(null);
+  const { isPending, data, isError, error } = useQuery({
+    queryKey: ["admissions", page],
+    queryFn: () => admissionService.getAll(page),
+  });
+  const refinedData = useMemo(() => data?.data?.results || [], [data]);
+  const hasNext = !!data?.data?.next;
+  const hasPrev = !!data?.data?.previous;
 
-  const fetchAdmissions = async (url) => {
-    setLoading(true);
-    setError("");
-    try {
-      const response = await fetch(url);
-      const result = await response.json();
-      if (result.results && result.results.length > 0) {
-        setAdmissions(result.results);
-        setNextPageUrl(result.next);
-        setPrevPageUrl(result.previous);
-      } else {
-        setAdmissions([]);
-        setError("কোনো ভর্তি তথ্য পাওয়া যায়নি!");
-      }
-    } catch (err) {
-      setError("ডাটা লোড করতে সমস্যা হয়েছে!", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const handleNext = useCallback(() => {
+    if (hasNext) setPage((prev) => prev + 1);
+  }, [hasNext]);
 
-  useEffect(() => {
-    fetchAdmissions(`${baseUrl}/admissions`);
-  }, []);
+  const handlePrev = useCallback(() => {
+    if (hasPrev && page > 1) setPage((prev) => prev - 1);
+  }, [hasPrev, page]);
 
   return (
     <>
@@ -66,9 +54,11 @@ const Admission = () => {
           </ul>
         </div>
         <h2 className="text-2xl font-bold text-center">ভর্তি সংক্রান্ত তথ্য</h2>
-        {error && <div className="text-red-800 p-4 rounded mt-4">{error}</div>}
+        {!isPending && isError && (
+          <div className="text-red-800 p-4 rounded mt-4">{error.message}</div>
+        )}
 
-        {loading ? (
+        {isPending ? (
           <div className="flex flex-col justify-center items-center">
             <div className="mt-6">
               <svg
@@ -126,33 +116,33 @@ const Admission = () => {
                 </tr>
               </thead>
               <tbody>
-                {admissions.map((item) => (
-                  <tr key={item.id} className="whitespace-nowrap">
-                    <td className="border p-10">{item.ClassName}</td>
-                    <td className="border p-10">
-                      {item.new_admission_fee} টাকা
-                    </td>
-                    <td className="border p-10">
-                      {item.old_admission_fee} টাকা
-                    </td>
-                    <td className="border p-10">{item.new_total_fee} টাকা</td>
-                    <td className="border p-10">{item.old_total_fee} টাকা</td>
-                    <td className="border p-10">{item.additional_fee} টাকা</td>
-                    <td className="border p-10">{item.monthly_fee}</td>
-                    <td className="border p-10">{item.admission_start_date}</td>
-                    <td className="border p-10">{item.admission_end_date}</td>
-                    <td className="border p-10">{item.required_documents}</td>
-                    <td
-                      className={`border p-10 ${
-                        item.seat_availability
-                          ? "bg-green-800 text-white"
-                          : "bg-red-800 text-white"
-                      }`}
-                    >
-                      {item.seat_availability ? "খালি আছে" : "খালি নেই"}
-                    </td>
-                  </tr>
-                ))}
+                {refinedData?.map(
+                  ({
+                    id,
+                    ClassName,
+                    new_admission_fee,
+                    old_admission_fee,
+                    new_total_fee,
+                    old_total_fee,
+                    additional_fee,
+                    admission_end_date,
+                    required_documents,
+                    seat_availability,
+                  }) => (
+                    <Admission
+                      ClassName={ClassName}
+                      additional_fee={additional_fee}
+                      admission_end_date={admission_end_date}
+                      new_admission_fee={new_admission_fee}
+                      new_total_fee={new_total_fee}
+                      old_admission_fee={old_admission_fee}
+                      old_total_fee={old_total_fee}
+                      required_documents={required_documents}
+                      key={id}
+                      seat_availability={seat_availability}
+                    />
+                  )
+                )}
               </tbody>
             </table>
           </div>
@@ -160,23 +150,24 @@ const Admission = () => {
 
         {/* Pagination */}
         <div className="flex justify-between mt-8 gap-5">
-          {prevPageUrl && (
-            <button onClick={() => fetchAdmissions(prevPageUrl)}>
-              🔙 পূর্ববর্তী পাতা
-            </button>
-          )}
-          {nextPageUrl && (
-            <button
-              onClick={() => fetchAdmissions(nextPageUrl)}
-              className="button1"
-            >
-              পরবর্তী পাতা ➡️
-            </button>
-          )}
+          <button
+            onClick={handlePrev}
+            disabled={!hasPrev}
+            className={`button1 ${!hasPrev && "opacity-50 cursor-not-allowed"}`}
+          >
+            🔙 পূর্ববর্তী পাতা
+          </button>
+          <button
+            onClick={handleNext}
+            disabled={!hasNext}
+            className={`button1 ${!hasNext && "opacity-50 cursor-not-allowed"}`}
+          >
+            পরবর্তী পাতা ➡️
+          </button>
         </div>
       </section>
     </>
   );
 };
 
-export default Admission;
+export default AdmissionPage;

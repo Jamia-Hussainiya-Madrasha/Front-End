@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { baseUrl } from "../constants/env.constants";
 import PageTitle from "../utils/PageTitle";
+import AllAcademics from "../features/academics/components/AllAcademics";
 
 const Academics = () => {
+<<<<<<< HEAD
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -44,6 +43,8 @@ const Academics = () => {
     navigate(`/academic/${id}`);
   };
 
+=======
+>>>>>>> afc1f491e8bef5d0fbe7a58ed8bae86080fe83c2
   return (
     <>
       <PageTitle key={"academicPage"} title={"Academic"} />
@@ -51,6 +52,7 @@ const Academics = () => {
         <h2 className="text-2xl font-semibold mb-8 text-center">
           একাডেমিক তথ্য
         </h2>
+<<<<<<< HEAD
 
         {loading ? (
           <div className="flex flex-col justify-center items-center">
@@ -117,6 +119,9 @@ const Academics = () => {
             </div>
           </>
         )}
+=======
+        <AllAcademics />
+>>>>>>> afc1f491e8bef5d0fbe7a58ed8bae86080fe83c2
       </section>
     </>
   );
