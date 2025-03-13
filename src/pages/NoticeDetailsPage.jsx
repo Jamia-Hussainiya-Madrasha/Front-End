@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../constants/env.constants";
 import PageTitle from "../utils/PageTitle";
 
-const NoticeDetail = () => {
+const NoticeDetails = () => {
   const { id } = useParams();
   const [notice, setNotice] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -123,4 +123,4 @@ const NoticeDetail = () => {
   );
 };
 
-export default NoticeDetail;
+export default NoticeDetails;
