@@ -4,14 +4,16 @@ import About from "../pages/About";
 import AcademicDetail from "../pages/academicDetails";
 import Academics from "../pages/Academics";
 import Admission from "../pages/Admission";
+import BookIntroduction from "../pages/BookIntroduction";
 import ContactUs from "../pages/ContactUs";
 import Home from "../pages/Home";
 import Notice from "../pages/Notice";
 import NoticeDetail from "../pages/noticeDetails";
-import Teachers from "../pages/Teachers";
 import PhotoGallary from "../pages/photoGallary";
+import Results from "../pages/Results";
+import ResultsDetails from "../pages/ResultsDetails";
+import Teachers from "../pages/Teachers";
 import VideoGallary from "../pages/VideoGallary";
-import BookIntroduction from "../pages/BookIntroduction";
 
 const Routes = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ const Routes = createBrowserRouter([
       {
         path: "/bookIntroduction",
         element: <BookIntroduction />,
+      },
+      {
+        path: "/results",
+        element: <Results />,
+      },
+      {
+        path: "/results/:id",
+        element: <ResultsDetails />,
       },
     ],
   },

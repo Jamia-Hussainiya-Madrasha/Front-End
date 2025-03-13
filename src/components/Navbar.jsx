@@ -86,11 +86,6 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/examSchedule" className="block px-4 py-2 hover:bg-blue-600">
-                    পরীক্ষা সময়সূচি جدول الامتحانات
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink to="/syllabus" className="block px-4 py-2 hover:bg-blue-600">
                     সিলেবাস المنهج الدراسي
                   </NavLink>
