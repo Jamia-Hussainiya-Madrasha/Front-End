@@ -7,7 +7,7 @@ const TheWordInfo = () => {
     <section>
       <div className="p-6 rounded-lg shadow-2xl">
         <h3 className="text-2xl font-semibold flex items-center mb-4">
-          <FaQuoteRight className="mr-2" /> বাণী
+          <FaQuoteRight className="mr-2" /> বাণী (البيان)
         </h3>
         <div className="leading-relaxed">
           <p>{aboutData.quote.text}</p>

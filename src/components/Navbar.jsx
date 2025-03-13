@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [academicDropdown, setAcademicDropdown] = useState(false);
 
   return (
     <nav className="text-white py-2 fixed top-0 left-0 w-full z-50" style={{ backgroundColor: "#111" }}>
@@ -17,10 +18,7 @@ const Navbar = () => {
         </span>
 
         {/* Navbar Links */}
-        <ul
-          className={`lg:flex gap-1 whitespace-nowrap items-center absolute lg:static top-16 left-0 right-0 w-full bg-gray-900 lg:bg-transparent text-center lg:text-left lg:w-auto lg:p-0 p-4 z-50 transition-all duration-300 ease-in-out ${isOpen ? "flex flex-col gap-2" : "hidden"
-            }`}
-        >
+        <ul className={`lg:flex gap-1 whitespace-nowrap items-center absolute lg:static top-16 left-0 right-0 w-full bg-gray-900 lg:bg-transparent text-center lg:text-left lg:w-auto lg:p-0 p-4 z-50 transition-all duration-300 ease-in-out ${isOpen ? "flex flex-col gap-2" : "hidden"}`}>
           {/* হোম */}
           <li className="text-lg">
             <NavLink
@@ -37,34 +35,64 @@ const Navbar = () => {
 
           {/* মাদ্রাসা সম্পর্কে */}
           <li className="relative group text-lg">
-            <a
-              className="px-4 cursor-pointer flex items-center"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
-            >
+            <a className="px-4 transform cursor-pointer flex items-center" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
               মাদ্রাসা সম্পর্কে <ChevronDown className="ml-1" size={16} />
             </a>
 
             {/* Dropdown Menu */}
             {dropdownOpen && (
-              <ul
-                className="absolute left-0 mt-1 bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden w-44 z-50"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
-              >
+              <ul className="absolute left-0 mt-1 bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden w-80 z-50" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
                 <li>
                   <NavLink to="/about" className="block px-4 py-2 hover:bg-blue-600">
-                    মাদ্রাসা সম্পর্কে
+                    মাদ্রাসা সম্পর্কে حول المدرسة الدينية
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/photoGallary" className="block px-4 py-2 hover:bg-blue-600">
-                    ফটো গ্যালারি
+                    ফটো গ্যালারি معرض الصور
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/VideoGallary" className="block px-4 py-2 hover:bg-blue-600">
-                    ভিডিও গ্যালারি
+                    ভিডিও গ্যালারি معرض الفيديوهات
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+
+          {/* একাডেমিক (Dropdown) */}
+          <li className="relative group text-lg">
+            <a className="px-4 transform cursor-pointer flex items-center" onMouseEnter={() => setAcademicDropdown(true)} onMouseLeave={() => setAcademicDropdown(false)}>
+              একাডেমিক <ChevronDown className="ml-1" size={16} />
+            </a>
+
+            {/* Dropdown Menu */}
+            {academicDropdown && (
+              <ul className="absolute left-0 mt-1 bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden w-72 z-50" onMouseEnter={() => setAcademicDropdown(true)} onMouseLeave={() => setAcademicDropdown(false)}>
+                <li>
+                  <NavLink to="/academic" className="block px-4 py-2 hover:bg-blue-600">
+                    একাডেমিক أكاديمي
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/bookIntroduction" className="block px-4 py-2 hover:bg-blue-600">
+                    বই পরিচিতি مقدمة الكتاب
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/results" className="block px-4 py-2 hover:bg-blue-600">
+                    ফলাফল النتيجة
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/examSchedule" className="block px-4 py-2 hover:bg-blue-600">
+                    পরীক্ষা সময়সূচি جدول الامتحانات
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/syllabus" className="block px-4 py-2 hover:bg-blue-600">
+                    সিলেবাস المنهج الدراسي
                   </NavLink>
                 </li>
               </ul>
@@ -74,7 +102,6 @@ const Navbar = () => {
           {/* অন্যান্য মেনু */}
           {[
             { to: "/contact", label: "যোগাযোগ" },
-            { to: "/academic", label: "একাডেমিক" },
             { to: "/teachers", label: "শিক্ষকবৃন্দ" },
             { to: "/admission", label: "ভর্তি" },
             { to: "/notice", label: "নোটিশ" },
@@ -93,7 +120,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
       </div>
     </nav>
   );
