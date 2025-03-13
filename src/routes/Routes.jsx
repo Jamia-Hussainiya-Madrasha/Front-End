@@ -5,8 +5,8 @@ import AcademicDetailPage from "../pages/AcademicDetailsPage";
 import Academics from "../pages/Academics";
 import ContactUs from "../pages/ContactUs";
 import Home from "../pages/Home";
-import Notice from "../pages/Notice";
-import NoticeDetail from "../pages/noticeDetails";
+import NoticePage from "../pages/NoticePage";
+import NoticeDetailsPage from "../pages/NoticeDetailsPage";
 import TeachersPage from "../pages/TeachersPage";
 import AdmissionPage from "../pages/AdmissionPage";
 
@@ -45,11 +45,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/notice",
-        element: <Notice />,
+        element: <NoticePage />,
       },
       {
         path: "/notice/:id",
-        element: <NoticeDetail />,
+        element: <NoticeDetailsPage />,
       },
     ],
   },
